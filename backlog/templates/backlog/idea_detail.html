@@ -1,0 +1,41 @@
+{% extends "backlog/base.html" %}
+
+{% block content %}
+
+    <!-- Should remove this fixed pixel width -->
+    <table class="table table-borderless" style="width: 540px">
+        <tr>
+            <th scope="row">Title</th>
+            <td>{{ idea_details.title }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Description</th>
+            <td>{{ idea_details.description }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Author</th>
+            <td>{{ idea_details.author }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Elo Score</th>
+            <td>{{ idea_details.elo_score }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Date Created</th>
+            <td>{{ idea_details.created }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Date Last Modified</th>
+            <td>{{ idea_details.modified }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Scheduled Release</th>
+            <td>{{ idea_details.release }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Current Status</th>
+            <td>{{ idea_details.status }}</td>
+        </tr>
+    </table>
+
+{% endblock %}

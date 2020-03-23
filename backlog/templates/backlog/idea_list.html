@@ -1,0 +1,39 @@
+{% extends "backlog/base.html" %}
+
+{% block content %}
+    <div class="container-fluid">
+        <h1>List of all open ideas</h1>
+        <p>This page is just to test the database model.</p>
+        <table class="table table-sm table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Elo Score</th>
+                    <th scope="col">Created</th>
+                    <th scope="col">Modified</th>
+                    <th scope="col">Release</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in open_ideas %}
+                <tr> 
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.description }}</td>
+                    <td>{{ item.author }}</td>
+                    <td>{{ item.elo_score }}</td>
+                    <td>{{ item.created }}</td>
+                    <td>{{ item.modified }}</td>
+                    <td>{{ item.release }}</td>
+                    <td>{{ item.status }}</td>
+                    <td><a href="{% url 'backlog:idea_detail' item.slug %}">More Detail</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
