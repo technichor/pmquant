@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,31 +10,21 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Hello, world!</title>
+    <link rel="shortcut icon" type="image/png" href="{% static "backlog/img/favicon.ico" %}"/>
   </head>
   <body>
       <!-- Just an image -->
-    {% load static %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="{% url 'home:index' %}">
-          <img src="{% static "home/img/pmquant.svg" %}" height="40" alt="My image">
+          <img src="{% static "backlog/img/pmquant.svg" %}" height="40" alt="My image">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" href="{% url 'home:index' %}">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'backlog:idea_list' %}">Idea List</a>
-            </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li> -->
+            {% url 'home:index' as url %}<li class="nav-item"><a class="nav-link {% if request.path == url %} active {% endif %}" href="{{ url }}">Home</a></li>
+            {% url 'backlog:idea_list' as url %}<li class="nav-item"><a class="nav-link {% if request.path == url %} active {% endif %}" href="{{ url }}">Ideas</a></li>
           </ul>
         </div>
     </nav>
