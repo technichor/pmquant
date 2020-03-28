@@ -46,3 +46,15 @@ class ideas(models.Model):
     
     def get_absolute_url(self):
         return reverse('idea-detail', kwargs={'pk': self.pk})
+
+
+class pairwise_results(models.Model):
+    win_idea = models.ForeignKey(ideas, on_delete=models.CASCADE, related_name='win_idea_name')
+    lose_idea = models.ForeignKey(ideas, on_delete=models.CASCADE, related_name='lose_idea_name')
+    datetime = models.DateTimeField(auto_now_add=True)
+    win_elo = models.SmallIntegerField(default=1500)
+    lose_elo = models.SmallIntegerField(default=1500)
+    def __str__(self):
+        return self.datetime.strftime("%m/%d/%Y, %H:%M:%S")
+    def get_absolute_url(self):
+        return reverse('idea_pairwise')

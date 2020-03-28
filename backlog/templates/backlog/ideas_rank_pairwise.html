@@ -3,29 +3,28 @@
 {% block content %}
 
 <div class="row m-4">
-    <div class="card-deck">
+    <div class="card-deck container-fluid">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Pairwise Comparison</h5>
-                <p class="card-text">Users choose between two random ideas and the system ranks them based on Elo Rating.</p>
+                <h5 class="card-title">{{ idea1.title }}</h5>
+                <p class="card-text">{{ idea1.description }}</p>
             </div>
             <div class="card-footer text-center">
-                <a href="#" class="btn btn-primary">Choose Idea 1</a>
+                <!-- <a href="#" class="btn btn-primary">Choose Idea 1</a> -->
+                <form action="{% url 'backlog:pairwise_choose' idea1.id idea2.id %}" method="post">{% csrf_token %}<input class="btn btn-primary" type="submit" name="choose_idea1" value="Choose Idea 1" /></form>
             </div>
         </div>
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Sampled Ranking</h5>
-                <p class="card-text">Users are provided a subset of ideas and asked to rank them against the others.</p>
+                <h5 class="card-title">{{ idea2.title }}</h5>
+                <p class="card-text">{{ idea2.description }}</p>
             </div>
             <div class="card-footer text-center">
-                <a href="#" class="btn btn-primary">Choose Idea 2</a>
+                <!-- <a href="#" class="btn btn-primary">Choose Idea 2</a> -->
+                <form action="{% url 'backlog:pairwise_choose' idea2.id idea1.id %}" method="post">{% csrf_token %}<input class="btn btn-primary" type="submit" name="choose_idea2" value="Choose Idea 2" /></form>
             </div>
         </div>
     </div>
 </div>
-
-
-
 
 {% endblock %}
