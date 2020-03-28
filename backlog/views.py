@@ -6,15 +6,23 @@ from .models import ideas
 
 def idea_list(request):
     open_ideas = ideas.published.all()
-#    template = loader.get_template()
     context = {'open_ideas': open_ideas}
     return render(request, 'backlog/idea_list.html', context)
-#   return HttpResponse(template.render(context, request))
+
+def ideas_home(request):
+    open_ideas = ideas.published.all()
+    context = {'open_ideas': open_ideas}
+    return render(request, 'backlog/ideas_home.html', context)
 
 def idea_detail(request, page_slug):
     idea_details = get_object_or_404(ideas, slug=page_slug)
     context = {'idea_details': idea_details}
     return render(request, 'backlog/idea_detail.html', context)
+
+def idea_rank_pairwise(request):
+    open_ideas = ideas.published.all()
+    context = {'open_ideas': open_ideas}
+    return render(request, 'backlog/ideas_rank_pairwise.html', context)
 
 # def newIdea(request):
 #     if request.method=='POST':
