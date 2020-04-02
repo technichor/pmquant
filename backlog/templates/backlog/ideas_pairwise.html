@@ -11,7 +11,7 @@
             </div>
             <div class="card-footer text-center">
                 <!-- <a href="#" class="btn btn-primary">Choose Idea 1</a> -->
-                <form action="{% url 'backlog:pairwise_choose' idea1.id idea2.id %}" method="post">{% csrf_token %}<input class="btn btn-primary" type="submit" name="choose_idea1" value="Choose Idea 1" /></form>
+                <form action="{% url 'backlog:choose_pairwise' idea1.id idea2.id %}" method="post">{% csrf_token %}<input class="btn btn-primary" type="submit" name="chosen_idea" value="Choose Idea 1" /></form>
             </div>
         </div>
         <div class="card">
@@ -21,7 +21,7 @@
             </div>
             <div class="card-footer text-center">
                 <!-- <a href="#" class="btn btn-primary">Choose Idea 2</a> -->
-                <form action="{% url 'backlog:pairwise_choose' idea2.id idea1.id %}" method="post">{% csrf_token %}<input class="btn btn-primary" type="submit" name="choose_idea2" value="Choose Idea 2" /></form>
+                <form action="{% url 'backlog:choose_pairwise' idea2.id idea1.id %}" method="post">{% csrf_token %}<input class="btn btn-primary" type="submit" name="chosen_idea" value="Choose Idea 2" /></form>
             </div>
         </div>
     </div>
