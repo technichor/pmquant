@@ -13,12 +13,12 @@ class IdeaCreate(CreateView):
     success_url = reverse_lazy('backlog:idea_list')
 
 def idea_list(request):
-    open_ideas = ideas.published.all()
+    open_ideas = ideas.published.all().order_by('-elo_score')
     context = {'open_ideas': open_ideas}
     return render(request, 'backlog/idea_list.html', context)
 
 def idea_home(request):
-    open_ideas = ideas.published.all()
+    open_ideas = ideas.published.all().order_by('-elo_score')[:20]
     context = {'open_ideas': open_ideas}
     return render(request, 'backlog/ideas_home.html', context)
 
