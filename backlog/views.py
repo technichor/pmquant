@@ -27,6 +27,14 @@ def idea_detail(request, page_slug):
     context = {'idea_details': idea_details}
     return render(request, 'backlog/idea_detail.html', context)
 
+def idea_sample_rank(request):
+    if request.method=='POST':
+        ranked = request.POST.getlist('idea_list')
+        print(*ranked)
+    sampled_ideas = ideas.published.all()[:10]
+    context = {'sampled_ideas': sampled_ideas}
+    return render(request, 'backlog/ideas_rank_sample.html', context)
+
 def idea_pairwise(request):
     last=ideas.published.count()-1
     index1 = random.randint(0,last)

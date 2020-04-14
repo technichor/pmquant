@@ -1,0 +1,60 @@
+{% extends "backlog/base.html" %}
+
+{% block content %}
+    <div class="container-fluid">
+        <!-- <div class="row">
+            <div class='col-9'>
+                <h1>Backlog of all open ideas</h1>
+                <p>This page is just to test the database model.</p>
+            </div>
+        </div> -->
+        <div class="card">
+            <div class="card-header">
+                <div class='align-self-center'>
+                    <h5 class="m-0">Drag and Drop Ranking</h5>
+                </div>
+            </div>
+            <form action="{% url 'backlog:idea_sample_rank' %}" method="post">
+                {% csrf_token %}
+                <div class="card-body">
+                    <div class="pb-3">Rank these ideas from 1 (highest priority) to 10 (lowest priority)</div>
+                    <div class="d-flex flex-row no-gutters">
+                        <div class="d-inline-flex">
+                            <ul class="list-group">
+                                {% for item in sampled_ideas %}
+                                <li class="list-group-item text-center px-3">{{ forloop.counter }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="flex-fill">
+                            <ul id="idea_list" class="list-group">
+                                {% for item in sampled_ideas %}
+                                <li id="item{{ forloop.counter }}" class="list-group-item text-truncate"><i class="fas fa-grip-vertical pr-2"></i>  {{ item.title }}<input type="hidden" name="idea_list" value="item{{ forloop.counter }}"></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <!-- <a href="#" class="btn btn-primary">Choose Idea 2</a> -->
+                    <input class="btn btn-primary" type="submit" name="submit_ranked_list" value="Save Ranking" />
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% for item in open_ideas %}
+<tr> 
+    <td class="align-middle">{{ item.title }}</td>
+    <!-- <td class="align-middle">{{ item.description }}</td> -->
+    <td class="align-middle">{{ item.author }}</td>
+    <td class="align-middle">{{ item.elo_score }}</td>
+    <td class="align-middle">{{ item.created }}</td>
+    <!-- <td class="align-middle">{{ item.modified }}</td> -->
+    <!-- <td class="align-middle">{{ item.release }}</td> -->
+    <td class="align-middle">{{ item.get_status_display }}</td>
+    <td class="align-middle"><a href="{% url 'backlog:idea_detail' item.slug %}" class="btn btn-outline-secondary btn-sm float-right">More Detail</a></td>
+</tr>
+{% endfor %}

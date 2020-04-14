@@ -10,34 +10,35 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>PM Quant</title>
+    <!-- <title>{% block page_title %}{% endblock %}</title> -->
     <link rel="shortcut icon" type="image/png" href="{% static "home/img/favicon.ico" %}"/>
   </head>
   <body>
-      <!-- Just an image -->
-    <div>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="#">
-            <img src="{% static "home/img/pmquant.svg" %}" height="40" alt="My image">
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              {% url 'home:index' as url %}<li class="nav-item"><a class="nav-link {% if request.path == url %} active {% endif %}" href="{{ url }}">Home</a></li>
-              {% url 'backlog:ideas_home' as url %}<li class="nav-item"><a class="nav-link {% if request.path == url %} active {% endif %}" href="{{ url }}">Ideas</a></li>
-            </ul>
-          </div>
-      </nav>
+<!-- Nav Bar START -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+        <a class="navbar-brand" href="#">
+          <img src="{% static "home/img/pmquant.svg" %}" height="40" alt="My image">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            {% url 'home:index' as url %}<li class="nav-item"><a class="nav-link {% if request.path == url %} active {% endif %}" href="{{ url }}">Home</a></li>
+            {% url 'backlog:ideas_home' as url %}<li class="nav-item"><a class="nav-link {% if request.path == url %} active {% endif %}" href="{{ url }}">Ideas</a></li>
+          </ul>
+        </div>
+    </nav>
+    <div class="container">
+      <div class="card mx-4">
+        <div class="card-body">
+          <h5 class="card-title">Coming soon!</h5>
+          <p class="card-text">This site is under construction but feedback is welcome. Try our idea ranking algorithms.</p>
+          <a href="{% url 'backlog:ideas_home' %}" class="btn btn-primary">Start Ranking Ideas</a>
+        </div>
+      </div>
     </div>
-
-    <div class="jumbotron m-4 bg-secondary text-light">
-      <h1 class="display-4">Welcome to PM Quant!</h1>
-      <p class="lead">I don't have much to say here yet. I'm going to try to finish something first and then I can have a home page.</p>
-      <!-- <hr class="my-4">
-      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a> -->
-    </div>
+<!-- Nav Bar END -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
