@@ -9,14 +9,13 @@
     <meta name="google" content="notranslate" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>PM Quant</title>
-    <!-- <title>{% block page_title %}{% endblock %}</title> -->
+    <title>{% block page_title %}{% endblock %}</title>
     <link rel="shortcut icon" type="image/png" href="{% static "home/img/favicon.ico" %}"/>
   </head>
   <body>
 <!-- Nav Bar START -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{% url 'home:home' %}">
           <img src="{% static "home/img/pmquant.svg" %}" height="40" alt="My image">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,23 +23,17 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            {% url 'home:index' as url %}<li class="nav-item"><a class="nav-link {% if request.path == url %} active {% endif %}" href="{{ url }}">Home</a></li>
-            {% url 'backlog:ideas_home' as url %}<li class="nav-item"><a class="nav-link {% if request.path == url %} active {% endif %}" href="{{ url }}">Ideas</a></li>
+            {% url 'home:home' as url %}<li class="nav-item"><a class="nav-link {% if request.path == url %} active {% endif %}" href="{{ url }}">Home</a></li>
+            {% url 'backlog:ideas_home' as url %}<li class="nav-item"><a class="nav-link {% if request.path == url %} active {% endif %}" href="{{ url }}">Prioritize</a></li>
+            {% url 'home:about' as url %}<li class="nav-item"><a class="nav-link {% if request.path == url %} active {% endif %}" href="{{ url }}">About</a></li>
           </ul>
         </div>
     </nav>
-    <div class="container">
-      <div class="card mx-4">
-        <div class="card-body">
-          <h5 class="card-title">Coming soon!</h5>
-          <p class="card-text">This site is under construction but feedback is welcome. Try our idea ranking algorithms.</p>
-          <a href="{% url 'backlog:ideas_home' %}" class="btn btn-primary">Start Ranking Ideas</a>
-        </div>
-      </div>
-    </div>
-<!-- Nav Bar END -->
+    <!-- Nav Bar END -->
 
-    <!-- Optional JavaScript -->
+    {% block content %}
+    {% endblock %}
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

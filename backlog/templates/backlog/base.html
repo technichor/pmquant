@@ -1,6 +1,6 @@
-{% load static %}
 <!doctype html>
 <html lang="en">
+  {% load static %}
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -17,7 +17,7 @@
   <body>
 <!-- Nav Bar START -->
     <nav class="navbar navbar-expand-sm navbar-light bg-light mb-4">
-        <a class="navbar-brand" href="{% url 'home:index' %}">
+        <a class="navbar-brand" href="{% url 'home:home' %}">
           <img src="{% static "backlog/img/pmquant.svg" %}" height="40" alt="My image">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,8 +25,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            {% url 'home:index' as url %}<li class="nav-item"><a class="nav-link {% if request.path == url %} active {% endif %}" href="{{ url }}">Home</a></li>
-            {% url 'backlog:ideas_home' as url %}<li class="nav-item"><a class="nav-link {% if request.path == url %} active {% endif %}" href="{{ url }}">Ideas</a></li>
+            {% url 'home:home' as url %}<li class="nav-item"><a class="nav-link {% if request.path == url %} active {% endif %}" href="{{ url }}">Home</a></li>
+            {% url 'backlog:ideas_home' as url %}<li class="nav-item"><a class="nav-link {% if request.path == url %} active {% endif %}" href="{{ url }}">Prioritize</a></li>
+            {% url 'home:about' as url %}<li class="nav-item"><a class="nav-link {% if request.path == url %} active {% endif %}" href="{{ url }}">About</a></li>
           </ul>
         </div>
     </nav>
