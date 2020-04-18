@@ -42,7 +42,7 @@
                     </div>
                     <div class='col-6 align-self-center'>
                         <a href="{% url 'backlog:idea_list' %}" class="btn btn-outline-secondary btn-sm float-right">Show All</a>
-                        <a href="{% url 'backlog:idea_add' %}" class="btn btn-outline-secondary btn-sm float-right mr-2">Add New Idea</a>
+                        <a href="{% url 'backlog:idea_add' %}" class="btn btn-outline-secondary btn-sm float-right mr-2 d-none d-lg-block">Add New Idea</a>
                     </div>
                 </div>
             </div>
@@ -52,13 +52,13 @@
                         <tr>
                             <th scope="col">Title</th>
                             <!-- <th scope="col">Description</th> -->
-                            <th scope="col">Author</th>
+                            <th class="d-none d-sm-table-cell" scope="col">Author</th>
                             <th scope="col">Elo Score</th>
                             <!-- <th scope="col">Created</th> -->
                             <!-- <th scope="col">Modified</th> -->
                             <!-- <th scope="col">Release</th> -->
                             <!-- <th scope="col">Status</th> -->
-                            <th scope="col"></th>
+                            <th class="d-none d-sm-table-cell" scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -66,13 +66,13 @@
                         <tr> 
                             <td class="align-middle">{{ item.title }}</td>
                             <!-- <td class="align-middle">{{ item.description }}</td> -->
-                            <td class="align-middle">{{ item.author }}</td>
+                            <td class="align-middle d-none d-sm-table-cell">{{ item.author }}</td>
                             <td class="align-middle">{{ item.elo_score }}</td>
                             <!-- <td class="align-middle">{{ item.created }}</td> -->
                             <!-- <td class="align-middle">{{ item.modified }}</td> -->
                             <!-- <td class="align-middle">{{ item.release }}</td> -->
                             <!-- <td class="align-middle">{{ item.get_status_display }}</td> -->
-                            <td class="align-middle"><a href="{% url 'backlog:idea_detail' item.slug %}" class="btn btn-outline-secondary btn-sm float-right">More Detail</a></td>
+                            <td class="align-middle d-none d-sm-table-cell"><a href="{% url 'backlog:idea_detail' item.slug %}" class="btn btn-outline-secondary btn-sm float-right">More Detail</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>
