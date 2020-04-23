@@ -13,6 +13,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'backlog.apps.BacklogConfig',
     'home.apps.HomeConfig',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -55,3 +56,5 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+IMPORT_EXPORT_USE_TRANSACTIONS = True
