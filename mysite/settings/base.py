@@ -1,11 +1,8 @@
 import os
 from decouple import config
 
-ENVIRONMENT = os.getenv('ENVIRONMENT', 'development')
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SECRET_KEY = config('SECRET_KEY')
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -16,6 +13,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'backlog.apps.BacklogConfig',
     'home.apps.HomeConfig',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -58,3 +56,5 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+IMPORT_EXPORT_USE_TRANSACTIONS = True

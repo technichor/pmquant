@@ -2,6 +2,10 @@ from .base import *
 
 DEBUG = config('DEBUG', cast=bool)
 
+ADMINS = (
+    ('Corey', 'corey.b.becker@gmail.com')
+)
+
 ALLOWED_HOSTS = ['www.pmquant.com','technichor.pythonanywhere.com']
 
 AUTH_PASSWORD_VALIDATORS = [
