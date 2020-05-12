@@ -2,81 +2,82 @@
 
 {% block page_title %}PMQ: Backlog{% endblock %}
 
-
 {% block content %}
 
 <!-- <div class="alert alert-primary" role="alert">
     If you want to see the list of ideas, <a href="{% url 'backlog:idea_list' %}" class="alert-link">click here!</a>
 </div> -->
 
-<div class="container">
-    <div class="col-sm-12">
-        <div class="row mb-4">
-            <div class="card-deck">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Pairwise Comparison</h5>
-                        <p class="card-text">Users choose between two random ideas and the system ranks them based on Elo Rating.</p>
-                    </div>
-                    <div class="card-footer text-center">
-                        <a href="{% url 'backlog:idea_pairwise' %}" class="btn btn-primary">Start Ranking</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Sampled Ranking</h5>
-                        <p class="card-text">Users are provided a subset of ideas and asked to rank them against the others.</p>
-                    </div>
-                    <div class="card-footer text-center">
-                        <a href="{% url 'backlog:idea_sample_rank' %}" class="btn btn-primary">Start Ranking</a>
-                    </div>
-                </div>
+
+
+    <div class="container-fluid">
+        <div class="container">
+            <div class="card-body">
+                <h2 class="card-title">Prioritizing your backlog</h2>
+                <p class="card-text">No team has infinite time and resources at their disposal. We all have to make difficult decisions about how to prioritize our finite resources in order to deliver the most value to our stakeholders.</p>
+                <p class="card-text">We know user feedback is critical to building a successful product, but gathering this feedback and aggregating it in an objective manner can be difficult. One of the most challenging aspects of digesting the vast amount of inputs we receive, is reconciling conflicting data points.</p>
+                <p class="card-text">In my experience, letting our users make direct comparisons themselves and then aggregating those opinions across our userbase, has proved to be a successful technique. Below I have two methods for gathering direct user feedback in a way that allows easy aggregation.</p>
+                <p class="card-text">First, we have the "Pairwise Comparison." Utilizing the ranking system used by Chess masters, we force users to choose between two features/ideas, and then rank the items based on their "performance."</p>
+                <p class="card-text">Second, is what I call the sampled ranking. Here I take 10 random ideas and have users drag them into the order of preference.</p>
             </div>
         </div>
     </div>
-        <div class="card">
-            <div class="card-header">
-                <div class="row">
-                    <div class='col-6 align-self-center'>
-                        <h5 class="m-0">Top 20 Open Ideas</h5>
-                    </div>
-                    <div class='col-6 align-self-center'>
-                        <a href="{% url 'backlog:idea_list' %}" class="btn btn-outline-secondary btn-sm float-right">Show All</a>
-                        <a href="{% url 'backlog:idea_add' %}" class="btn btn-outline-secondary btn-sm float-right mr-2 d-none d-lg-block">Add New Idea</a>
-                    </div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Pairwise Comparison</h5>
+                    <p class="card-text">Users choose between two random ideas and the system ranks them based on Elo Rating.</p>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{% url 'backlog:idea_pairwise' %}" class="btn btn-primary">Start Ranking</a>
                 </div>
             </div>
-            <div class="card-body">
-                <table class="table table-sm table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Title</th>
-                            <!-- <th scope="col">Description</th> -->
-                            <th class="d-none d-sm-table-cell" scope="col">Author</th>
-                            <th scope="col">Elo Score</th>
-                            <!-- <th scope="col">Created</th> -->
-                            <!-- <th scope="col">Modified</th> -->
-                            <!-- <th scope="col">Release</th> -->
-                            <!-- <th scope="col">Status</th> -->
-                            <th class="d-none d-sm-table-cell" scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for item in open_ideas %}
-                        <tr> 
-                            <td class="align-middle">{{ item.title }}</td>
-                            <!-- <td class="align-middle">{{ item.description }}</td> -->
-                            <td class="align-middle d-none d-sm-table-cell">{{ item.author }}</td>
-                            <td class="align-middle">{{ item.elo_score }}</td>
-                            <!-- <td class="align-middle">{{ item.created }}</td> -->
-                            <!-- <td class="align-middle">{{ item.modified }}</td> -->
-                            <!-- <td class="align-middle">{{ item.release }}</td> -->
-                            <!-- <td class="align-middle">{{ item.get_status_display }}</td> -->
-                            <td class="align-middle d-none d-sm-table-cell"><a href="{% url 'backlog:idea_detail' item.slug %}" class="btn btn-outline-secondary btn-sm float-right">More Detail</a></td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Sampled Ranking</h5>
+                    <p class="card-text">Users are provided a subset of ideas and asked to rank them against the others.</p>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{% url 'backlog:idea_sample_rank' %}" class="btn btn-primary">Start Ranking</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <div class="row">
+                        <div class='col-6 align-self-center'>
+                            <h5 class="m-0">Top 10</h5>
+                        </div>
+                        <div class='col-6 align-self-center'>
+                            <a href="{% url 'backlog:idea_list' %}" class="btn btn-outline-secondary btn-sm float-right">Show More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-sm table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th scope="col">Title</th>
+                                <th scope="col">Elo Score</th>
+                                <th scope="col">Avg Rank</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in open_ideas %}
+                            <tr> 
+                                <td class="align-middle">{{ item.title }}</td>
+                                <td class="align-middle text-center">{{ item.elo_score }}</td>
+                                <td class="align-middle text-center">5</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

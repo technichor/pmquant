@@ -1,5 +1,7 @@
 {% extends "backlog/base.html" %}
 
+{% block page_title %}PMQ: Rank{% endblock %}
+
 {% block content %}
     <div class="container-fluid">
         <!-- <div class="row">
@@ -11,7 +13,7 @@
         <div class="card">
             <div class="card-header">
                 <div class='align-self-center'>
-                    <h5 class="m-0">Drag and Drop Ranking</h5>
+                    <h5 class="m-0">Sampled Ranking</h5>
                 </div>
             </div>
             <form action="{% url 'backlog:idea_sample_rank' %}" method="post">

@@ -18,7 +18,7 @@ def idea_list(request):
     return render(request, 'backlog/idea_list.html', context)
 
 def idea_home(request):
-    open_ideas = ideas.published.all().order_by('-elo_score')[:20]
+    open_ideas = ideas.published.all().order_by('-elo_score')[:10]
     context = {'open_ideas': open_ideas}
     return render(request, 'backlog/ideas_home.html', context)
 
@@ -31,7 +31,7 @@ def idea_sample_rank(request):
     if request.method=='POST':
         ranked = request.POST.getlist('idea_list')
         print(*ranked)
-    sampled_ideas = ideas.published.all()[:10]
+    sampled_ideas = ideas.published.all().order_by('?')[:10]
     context = {'sampled_ideas': sampled_ideas}
     return render(request, 'backlog/ideas_rank_sample.html', context)
 
